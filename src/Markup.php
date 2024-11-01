@@ -5,6 +5,7 @@
 namespace HtmlGenerator;
 
 use ArrayAccess;
+use HtmlGenerator\MarkupWrapper;
 
 if (!defined('ENT_XML1')) {
     define('ENT_XML1', 16);
@@ -14,7 +15,7 @@ if (!defined('ENT_XHTML')) {
 }
 
 
-class Markup implements ArrayAccess
+class Markup extends MarkupWrapper implements ArrayAccess
 {
     /** @var boolean Specifies if attribute values and text input sould be protected from XSS injection */
     public static $avoidXSS = false;
@@ -28,7 +29,6 @@ class Markup implements ArrayAccess
     protected $parent = null;
 
     protected $tag = null;
-    public $attributeList = null;
     protected $classList = null;
 
     protected $content = null;
@@ -146,53 +146,6 @@ class Markup implements ArrayAccess
     public function attr($attribute, $value = null)
     {
         return call_user_func_array(array($this, 'set'), func_get_args());
-    }
-
-    /**
-     * Checks if an attribute is set for this tag and not null
-     *
-     * @param string $attribute The attribute to test
-     * @return boolean The result of the test
-     */
-    public function offsetExists($attribute)
-    {
-        return isset($this->attributeList[$attribute]);
-    }
-
-    /**
-     * Returns the value the attribute set for this tag
-     *
-     * @param string $attribute The attribute to get
-     * @return mixed The stored result in this object
-     */
-    public function offsetGet($attribute)
-    {
-        return $this->offsetExists($attribute) ? $this->attributeList[$attribute] : null;
-    }
-
-    /**
-     * Sets the value an attribute for this tag
-     *
-     * @param string $attribute The attribute to set
-     * @param mixed $value The value to set
-     * @return void
-     */
-    public function offsetSet($attribute, $value)
-    {
-        $this->attributeList[$attribute] = $value;
-    }
-
-    /**
-     * Removes an attribute
-     *
-     * @param mixed $attribute The attribute to unset
-     * @return void
-     */
-    public function offsetUnset($attribute)
-    {
-        if ($this->offsetExists($attribute)) {
-            unset($this->attributeList[$attribute]);
-        }
     }
 
     /**

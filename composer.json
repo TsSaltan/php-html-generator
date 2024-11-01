@@ -1,9 +1,9 @@
 {
-	"name": "airmanbzh/php-html-generator",
+	"name": "tssaltan/php-html-generator",
 	"type": "package",
 	"description": "PHP html generator",
 	"keywords": ["generator", "html", "php"],
-	"homepage": "https://github.com/Airmanbzh/php-html-generator",
+	"homepage": "https://github.com/tssaltan/php-html-generator",
 	"license": "MIT",
 	"authors": [
 		{
@@ -19,9 +19,9 @@
 		"psr-4": { "HtmlGenerator\\Tests\\": "tests/" }
 	},
 	"support": {
-		"issues": "https://github.com/Airmanbzh/php-html-generator/issues"
+		"issues": "https://github.com/tssaltan/php-html-generator/issues"
 	},
 	"require": {
-		"php": ">=5.3.0"
+		"php": ">=8.0"
 	}
 }
