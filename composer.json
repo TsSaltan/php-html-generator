@@ -22,6 +22,6 @@
 		"issues": "https://github.com/tssaltan/php-html-generator/issues"
 	},
 	"require": {
-		"php": ">=8.0"
+		"php": ">=7.0"
 	}
 }
